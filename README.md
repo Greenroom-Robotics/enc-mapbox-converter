@@ -37,7 +37,7 @@ docker run -it -v /$PWD:/app enc-converter python3 cli.py
 4. You will be prompted for an input file and output name. For example.
 
 ```
-Input file path: /app/data/AU5193P0/5/0/AU5193P0.000
+Input file path: /app/example/AU5193P0/5/0/AU5193P0.000
 Output file name: output_mb_tiles_file
 
 ```
