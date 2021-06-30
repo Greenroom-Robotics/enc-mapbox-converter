@@ -1,6 +1,6 @@
 # ENC Mapbox converter
 
-This tool is used to convert ENC files (S57) to mbtiles.
+This tool is used to convert ENC files (S-57) to mbtiles.
 
 Internally this uses:
 

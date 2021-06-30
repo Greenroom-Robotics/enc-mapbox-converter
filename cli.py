@@ -2,11 +2,16 @@ from osgeo import ogr
 import subprocess
 import click
 
+OGR_S57_OPTIONS = "SPLIT_MULTIPOINT=ON,ADD_SOUNDG_DEPTH=ON"
+
+DEFAULT_INPUT = "/app/example/US5OH10M/US5OH10M.000"
+DEFAULT_OUTPUT = "output_mb_tiles_file"
+
 
 @click.command()
-@click.option("--input", prompt="Input file path")
-@click.option("--output", prompt="Output file name")
-def convert(input, output):
+@click.option("--input", prompt="Input file path", default=DEFAULT_INPUT)
+@click.option("--output", prompt="Output file name", default=DEFAULT_OUTPUT)
+def convert(input=DEFAULT_INPUT, output=DEFAULT_OUTPUT):
     input_file = ogr.Open(input, 0)
 
     # Get the layers in the file
@@ -25,7 +30,7 @@ def convert(input, output):
 
         # Use ogr2ogr to extract geojson from the enc file
         subprocess.call(
-            f"ogr2ogr -f GeoJSON -t_srs EPSG:4326 {geojson_layer} {input} {enc_layer}",
+            f"OGR_S57_OPTIONS={OGR_S57_OPTIONS} ogr2ogr -f GeoJSON -t_srs EPSG:4326 {geojson_layer} {input} {enc_layer}",
             shell=True,
         )
 

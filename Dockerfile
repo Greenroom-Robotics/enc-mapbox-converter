@@ -6,8 +6,6 @@ ARG DEBIAN_FRONTEND="noninteractive"
 RUN apt-get update
 RUN apt-get install -y python3 python3-pip build-essential gdal-bin python3-gdal libgdal-dev wget
 RUN echo 'PATH="$HOME/.local/bin/:$PATH"' >>~/.bashrc
-RUN export S57_PROFILE
-RUN export OGR_S57_OPTIONS=SPLIT_MULTIPOINT=ON,ADD_SOUNDG_DEPTH=ON
 RUN pip install "GDAL<=$(gdal-config --version)"
 
 # Install deps for tippecanoe
